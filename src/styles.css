@@ -1,0 +1,50 @@
+:root {
+  --bg: #0b1020;
+  --panel: #151b36;
+  --ink: #2b1633;
+  --yellow: #ffcf3a;
+  --text: #f4f8ff;
+  --muted: #9fb4ff;
+  --danger: #ff8a8a;
+}
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; height: 100%; background: var(--bg); color: var(--text); font-family: Nunito, system-ui, sans-serif; overscroll-behavior: none; }
+body { overflow: hidden; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+button { font-family: inherit; }
+
+/* ---- start screen ------------------------------------------------------------------------------ */
+.start { height: 100%; display: flex; align-items: center; justify-content: center; padding: max(12px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+.start-card { width: min(720px, 100%); display: flex; flex-direction: column; align-items: center; gap: clamp(8px, 2.2vh, 18px); text-align: center; }
+.start-logo { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: clamp(26px, 6vh, 44px); color: var(--yellow); letter-spacing: 0.02em; }
+.start-logo svg { width: clamp(38px, 9vh, 60px); height: auto; }
+.start-label { margin: 0; color: var(--muted); font-weight: 700; font-size: clamp(14px, 3vh, 18px); }
+.langs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.lang { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 8px 16px 8px 10px; border: 3px solid transparent; border-radius: 16px; background: var(--panel); color: var(--text); font: 800 clamp(15px, 3.4vh, 19px) Nunito, sans-serif; cursor: pointer; }
+.lang.on { border-color: var(--yellow); background: #232a52; }
+.lang:disabled { opacity: 0.5; }
+.big-button { min-height: 60px; min-width: min(360px, 90%); padding: 12px 28px; border: 0; border-radius: 20px; background: var(--yellow); color: var(--ink); font: 900 clamp(18px, 4vh, 24px) Nunito, sans-serif; box-shadow: 0 5px 0 #b98a0a; cursor: pointer; }
+.big-button:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 2px 0 #b98a0a; }
+.big-button:disabled { opacity: 0.75; cursor: default; }
+.start-hint { margin: 0; color: var(--muted); font-size: clamp(12px, 2.6vh, 15px); max-width: 560px; }
+.start-error { margin: 0; color: var(--danger); font-weight: 800; font-size: clamp(13px, 2.8vh, 16px); max-width: 560px; }
+.crash { height: 100%; display: flex; align-items: center; justify-content: center; }
+
+/* ---- face screen ------------------------------------------------------------------------------- */
+.face-screen { position: fixed; inset: 0; background: #ffcf3a; overflow: hidden; }
+.face-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.caption { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); max-width: 90%; padding: 8px 16px; border-radius: 14px; background: rgba(43, 22, 51, 0.82); color: #fff; font: 800 clamp(14px, 3.4vh, 22px) Nunito, sans-serif; text-align: center; pointer-events: none; }
+.badge { position: absolute; top: 12px; right: 14px; padding: 6px 14px; border-radius: 999px; background: rgba(43, 22, 51, 0.82); color: #fff; font: 800 14px Nunito, sans-serif; }
+.exit-corner { position: absolute; top: 0; left: 0; width: 90px; height: 90px; touch-action: none; }
+.exit-corner.held { background: radial-gradient(circle at 0 0, rgba(43, 22, 51, 0.35), transparent 70%); }
+.fake-person { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); z-index: 3; display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 14px; background: rgba(11, 16, 32, 0.9); }
+.fake-person input { width: 160px; }
+.debug { position: absolute; top: 8px; right: 8px; max-width: 46%; z-index: 3; padding: 8px 10px; border-radius: 10px; background: rgba(11, 16, 32, 0.88); color: #cfe0ff; font: 600 11px/1.35 ui-monospace, Menlo, monospace; user-select: text; }
+.debug pre { margin: 6px 0 0; white-space: pre-wrap; max-height: 110px; overflow: hidden; color: #9fb4ff; }
+.debug label { display: block; margin-top: 4px; }
+
+/* ---- a phone held upright --------------------------------------------------------------------- */
+.rotate { display: none; }
+@media (orientation: portrait) and (max-width: 700px) {
+  .rotate { display: flex; position: fixed; inset: 0; z-index: 10; align-items: center; justify-content: center; padding: 24px; background: var(--bg); color: var(--yellow); font: 900 24px Nunito, sans-serif; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) { .big-button { transition: none; } }

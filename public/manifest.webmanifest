@@ -1,0 +1,13 @@
+{
+  "name": "Thymio · Visage",
+  "short_name": "Thymio",
+  "description": "Un téléphone posé sur le Thymio 3 devient son visage.",
+  "start_url": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#0b1020",
+  "theme_color": "#0b1020",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
